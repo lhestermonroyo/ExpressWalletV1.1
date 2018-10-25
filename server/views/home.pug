@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title= title
+    link(rel="stylesheet", href="https://bootswatch.com/4/united/bootstrap.min.css")
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+      .container
+        a.navbar-brand(href='#') Express Wallet
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarColor01' aria-controls='navbarColor01' aria-expanded='false' aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarColor01.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+          ul.navbar-nav
+            li.nav-item.active
+              a.nav-link(href='/home')
+                | Home
+            li.nav-item
+              a.nav-link(href='/profile') Hello, John Doe
+            li.nav-item
+              a.nav-link(href='/log-out') Log Out
+    .container
+      h2.mt-3.mb-3 Dashboard
+      h5.text-right My Wallet: 
+        strong P50000
+      hr
+      .row.mt-3
+        .col-lg-4
+          .card.text-white.bg-primary.mb-3(style='max-width: 20rem;')
+            .card-body
+              h4.card-title Fund Transfer
+              p.card-text Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+              a.btn.btn-primary.btn-block.border-light(href="/fund-transfer") Go to Fund Transfer
+        .col-lg-4
+          .card.text-white.bg-success.mb-3(style='max-width: 20rem;')
+            .card-body
+              h4.card-title Check Balance
+              p.card-text Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+              a.btn.btn-success.btn-block.border-light(href="/check-balance") Go to Check Balance
+        .col-lg-4
+          .card.text-white.bg-warning.mb-3(style='max-width: 20rem;')
+            .card-body
+              h4.card-title Deposit
+              p.card-text Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+              a.btn.btn-warning.btn-block.border-light(href="/deposit") Go to Deposit
+        .col-lg-4
+          .card.text-white.bg-info.mb-3(style='max-width: 20rem;')
+            .card-body
+              h4.card-title Withdraw
+              p.card-text Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+              a.btn.btn-info.btn-block.border-light(href="/withdraw") Go to Withdraw
+        .col-lg-4
+          .card.text-white.bg-danger.mb-3(style='max-width: 20rem;')
+            .card-body
+              h4.card-title Bills Payment
+              p.card-text Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+              a.btn.btn-danger.btn-block.border-light(href="/bills-payment") Go to Bills Payment
+        .col-lg-4
+          .card.text-white.bg-dark.mb-3(style='max-width: 20rem;')
+            .card-body
+              h4.card-title Transaction History
+              p.card-text Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+              a.btn.btn-dark.btn-block.border-light(href="/transaction-history") Go to Transaction History
+    .footer.mt-5.mb-5
+      .p.text-center &copy; Express Wallet 2018. All Rights Reserved.  
+        

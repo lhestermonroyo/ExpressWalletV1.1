@@ -4,16 +4,19 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title= title
+    title= title 
     link(rel="stylesheet", href="https://bootswatch.com/4/united/bootstrap.min.css")
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.3.1/css/all.css")
   body
     .container
-      p.lead.text-center.mt-3 Express Wallet
+      p.lead.text-center.mt-3
+        i.fas.fa-wallet.fa-fw
+        |     Express Wallet
       .row
         .col-lg-4
         .col-lg-4
-          h2.text-center.mt-3 Sign Up
-          form(action="", method="post")
+          h2.text-center.mt-3 Create Your Own Wallet
+          form(action="/signup/add", method="post")
             .form-group
               label(for="") Firstname:
               input.form-control(type="text", name="firstname" required)
@@ -29,10 +32,13 @@ html(lang="en")
             .form-group
               label(for="") Confirm Password:
               input.form-control(type="password", name="con_password" required)
+              span#displayErr(style="display: none;") Passwords not identical.
             .form-group
               button.btn.btn-block.btn-success(type="submit") Sign Up
           a.btn.btn-block.btn-primary(href="/") Log In
         .col-lg-4
     .footer.mt-5.mb-5
       .p.text-center &copy; Express Wallet 2018. All Rights Reserved.  
+      //- each account in accounts
+      //-   ul= account.email
         

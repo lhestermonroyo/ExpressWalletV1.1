@@ -6,14 +6,17 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title= title
     link(rel="stylesheet", href="https://bootswatch.com/4/united/bootstrap.min.css")
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.3.1/css/all.css")
   body
     .container
-      p.lead.text-center.mt-3 Express Wallet
+      p.lead.text-center.mt-3 
+        i.fas.fa-wallet.fa-fw
+        |     Express Wallet
       .row
         .col-lg-4
         .col-lg-4
           h2.text-center.mt-3 Log In
-          form(action="", method="post")
+          form(action="/login", method="post")
             .form-group
               label(for="") E-mail:
               input.form-control(type="email", name="email" required)

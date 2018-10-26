@@ -1,5 +1,5 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import express from 'express';
+import mongoose from 'mongoose';
 const router = express.Router();
 
 let Accounts = require("../../models/accounts");
@@ -54,4 +54,4 @@ router.post("/add", (req, res) => {
 //   }
 // });
 
-module.exports = router;
+export default router;

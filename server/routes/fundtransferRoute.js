@@ -1,8 +1,8 @@
-const express = require("express");
+import express from 'express';
 const router = express.Router();
 
 router.get("/", (req, res) => {
   res.render("fundtransfer.pug", { title: "Fund Transfer | Express Wallet" });
 });
 
-module.exports = router;
+export default router;

@@ -1,28 +1,28 @@
-#Express Wallet
+Express Wallet
 
-##Team
+Team
 -Lhester Monroyo
 -Evans Dingcong
 -Ivan Dela Cruz
 -Brent Anthony Tudas
 
-##Features
+Features
 -Create Unionbank Sandbox Accounts
 -Online Login to Unionbank API
 -Check Account Balance
 
-##Upcoming Features
+Upcoming Features
 -Fund Transfer
 -Deposit
 -Withdraw
 -Bills Payment
 -Transaction History
 
-##Installation
+Installation
 Using npm:
 - npm install
 
-##Running
+Running
 Using console
 -cd to project
 -npm run start

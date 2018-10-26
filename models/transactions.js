@@ -1,26 +1,29 @@
 let mongoose = require("mongoose");
 
-let accountsSchema = mongoose.Schema({
-  email: {
+let transSchema = mongoose.Schema({
+  transaction_type: {
     type: String,
     required: true
   },
-  password: {
+  sender: {
     type: String,
     required: true
   },
-  firstname: {
+  recepient: {
     type: String,
     required: true
   },
-  lastname: {
+  amount: {
     type: String,
     required: true
   },
-  timestamp: {
+  wallet_balance: {
     type: String,
     required: true
   }
 });
 
-let accounts = (module.exports = mongoose.model("accounts", accountsSchema));
+let transactions = (module.exports = mongoose.model(
+  "transactions",
+  transSchema
+));

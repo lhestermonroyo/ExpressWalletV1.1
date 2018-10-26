@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const crypt = require("bcryptjs");
 const router = express.Router();
 
 let Accounts = require("../../models/accounts");
@@ -17,41 +18,50 @@ router.get("/", (req, res) => {
 });
 
 router.post("/add", (req, res) => {
-  let getAccount = Accounts.find({ email: req.body.email }, (err, account) => {
-    if (err) {
-      return null;
-    } else {
-      return req.body.email;
-    }
-  });
-
-  if (getAccount != req.body.email) {
-    let account = new Accounts();
-    account.firstname = req.body.firstname;
-    account.lastname = req.body.lastname;
-    account.email = req.body.email;
-    account.password = req.body.password;
-
-    account.save(err => {
+  if (req.body.password === req.body.con_password) {
+    Accounts.count({ email: req.body.email }, (err, cnt) => {
       if (err) {
         console.log(err);
       } else {
-        req.flash("success", "Registration successful!");
-        res.redirect("/");
+        if (cnt == 0) {
+          let account = new Accounts({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            password: req.body.password,
+            timestamp: new Date()
+          });
+
+          crypt.genSalt(10, (err, salt) => {
+            crypt.hash(account.password, salt, (err, hash) => {
+              if (err) {
+                console.log(err);
+              }
+
+              account.password = hash;
+              account.save(err => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  req.flash(
+                    "success",
+                    "You have created your Express Wallet account!"
+                  );
+                  res.redirect("/signup");
+                }
+              });
+            });
+          });
+        } else {
+          req.flash("danger", "E-mail already existed. Please try again.");
+          res.redirect("/signup");
+        }
       }
     });
   } else {
-    console.log("Error");
+    req.flash("danger", "Passwords not identical. Please try again.");
+    res.redirect("/signup");
   }
 });
-
-// account.save(err => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     req.flash("success", "Registration successful!");
-//     res.redirect("/");
-//   }
-// });
 
 module.exports = router;

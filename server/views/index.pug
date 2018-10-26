@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title= title
-    link(rel="stylesheet", href="https://bootswatch.com/4/united/bootstrap.min.css")
-    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.3.1/css/all.css")
-  body
-    .container
-      p.lead.text-center.mt-3 
-        i.fas.fa-wallet.fa-fw
-        |     Express Wallet
+extends layout
+
+block content 
+    .container#vueRender
       .row
         .col-lg-4
         .col-lg-4
           h2.text-center.mt-3 Log In
+          != messages('message', locals)
           form(action="/login", method="post")
             .form-group
               label(for="") E-mail:
@@ -26,7 +17,5 @@ html(lang="en")
             .form-group
               button.btn.btn-block.btn-success(type="submit") Log In
           a.btn.btn-block.btn-primary(href="/signup") Sign Up
-        .col-lg-4
-    .footer.mt-5.mb-5
-      .p.text-center &copy; Express Wallet 2018. All Rights Reserved.    
+        .col-lg-4 
         

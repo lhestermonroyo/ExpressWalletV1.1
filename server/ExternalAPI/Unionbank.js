@@ -43,41 +43,64 @@ class UnionBank {
     return await request(options);
   }
 
-  async onlineLogin(scope) {
+  // async onlineLogin(scope) {
+  //   const options = {
+  //     method: 'GET',
+  //     url: '/login',
+  //     qs: {
+  //       client_id: this.clientId,
+  //       response_type: 'token',
+  //       scope: 'account_info',
+  //     },
+  //     redirect_uri: 'localhost:3000/home',
+  //     headers: {
+  //       accept: 'application/json',
+  //       'Content-type': 'application/json',
+  //       'x-ibm-client-id': this.clientId,
+  //       'x-ibm-client-secret': this.clientSecret,
+  //     }
+  //   };
+  //   return await request(options);
+  // }
+
+  async getBalance(auth) {
     const options = {
       method: 'GET',
-      url: '/login',
-      qs: {
-        client_id: this.clientId,
-        response_type: 'token',
-        scope: 'account_info',
-      },
+      url: 'https://api-uat.unionbankph.com/partners/sb/accounts/v1/balances',
+      client_id: this.clientId,
+      // qs: {
+      //   client_id: this.clientId,
+      //   // response_type: 'token',
+      //   // scope: 'account_info',
+      // },
       redirect_uri: 'localhost:3000/home',
       headers: {
         accept: 'application/json',
-        'Content-type': 'application/json',
+        'content-type': 'application/json',
         'x-ibm-client-id': this.clientId,
         'x-ibm-client-secret': this.clientSecret,
+        authorization: 'Bearer ' + auth,
       }
     };
     return await request(options);
   }
 
-  async getBalance(auth) {
-    axios.defaults.baseURL = 'https://api-uat.unionbankph.com/partners/sb';
-    axios.defaults.headers.get['content-type'] = 'application/json';
-    axios.defaults.headers.get['accept'] = 'application/json';
-    axios.defaults.headers.get['x-ibm-client-id'] = this.clientId;
-    axios.defaults.headers.get['x-ibm-client-secret'] = this.clientSecret;
-    const path = '/accounts/v1/balances';
-    // const auth = JSON.parse(window.localStorage.getItem('accessToken'));
-    axios.defaults.headers.get['authorization'] = 'Bearer ' + auth.accessToken;
-    // axios.defaults.headers.get['authorization'] = 'Bearer ' + auth.access_token;
+  // async getBalance(auth) {
+  //   axios.defaults.baseURL = 'https://api-uat.unionbankph.com/partners/sb';
+  //   axios.defaults.headers.get['content-type'] = 'application/json';
+  //   axios.defaults.headers.get['accept'] = 'application/json';
+  //   axios.defaults.headers.get['x-ibm-client-id'] = this.clientId;
+  //   axios.defaults.headers.get['x-ibm-client-secret'] = this.clientSecret;
+  //   const path = '/accounts/v1/balances';
+  //   // const auth = JSON.parse(window.localStorage.getItem('accessToken'));
+  //   axios.defaults.headers.get['authorization'] = 'Bearer ' + auth;
+  //   console.log('ano ka auth:', auth);
+  //   // axios.defaults.headers.get['authorization'] = 'Bearer ' + auth.access_token;
     
-    const response = await axios.get(path);
-    console.log('balance:', response.data[0].amount);
-    return response.data[0].amount;
-  }
+  //   const response = await axios.get(path);
+  //   console.log('balance:', response.data[0].amount);
+  //   return response.data[0].amount;
+  // }
 
   // async onlineLogin() {
   //   const options = {

@@ -16,7 +16,8 @@ let Accounts = require("../../models/accounts");
 
 router.post("/login", async (req, res) => {
   // return await bank.onlineLogin();
-  const scope = 'account_info';
+  // const scope = 'account_info';
+  const scope = 'account_balances';
   const redirect = 'http://localhost:3000/home';
   axios.defaults.baseURL = 'https://api-uat.unionbankph.com/partners/sb';
   axios.defaults.headers.post['content-type'] = 'text/html';

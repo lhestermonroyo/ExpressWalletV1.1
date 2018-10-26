@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
 });
 
 router.get('/getbalance/:auth', async (req, res) => {
-  console.log('ani ni ang auth:', req.params.auth);
+  // console.log('ani ni ang auth:', req.params.auth);
   const amount = await bank.getBalance(req.params.auth);
   res.json(amount);
 })

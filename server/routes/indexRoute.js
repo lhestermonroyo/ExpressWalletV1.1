@@ -36,11 +36,9 @@ router.get('/unionbank/authorize/:code', (req, res) => {
     * Resorted to using cURL because request() and axios() failed to work.
     * Getting { "error":"invalid_grant" } consistently. #hack
    */
-  // const code = req.params.code;
   const { code } = req.params;
-  // console.log('ang code:', code);
-  // const redirectUri = 'http://localhost:3000/home';
-  const redirect_uri = 'http%3A%2F%2Flocalhost%3A3030%2Fhome';
+  const redirect_uri = 'http://localhost:3000/home';
+  // const redirect_uri = 'http%3A%2F%2Flocalhost%3A3030%2Fhome';
 
   const options = {
     method: 'GET',
@@ -48,20 +46,7 @@ router.get('/unionbank/authorize/:code', (req, res) => {
     
   }
 
-//   const command = `curl 'https://api-uat.unionbankph.com/partners/sb/convergent/v1/oauth2/token' \
-//   -H 'accept: application/json' \
-//   -H 'content-type: application/x-www-form-urlencoded' \
-//   -H 'x-ibm-client-id: ${clientId}' \
-//   -H 'x-ibm-client-secret: ${clientSecret}' \
-//   -d 'grant_type=authorization_code&client_id=${clientId}&redirect_uri=${redirect_uri}&code=${code}'
-// `;
-
   const command = `curl https://api-uat.unionbankph.com/partners/sb/convergent/v1/oauth2/token -H "accept: application/json" -H "content-type: application/x-www-form-urlencoded" -H "x-ibm-client-id: ${clientId}" -H "x-ibm-client-secret: ${clientSecret}" -X POST -d "grant_type=authorization_code&client_id=${clientId}&redirect_uri=${redirect_uri}&code=${code}"`;
-
-  // const command = `curl https://api-uat.unionbankph.com/partners/sb/convergent/v1/oauth2/token -H 
-  // "accept: application/json" -H "content-type: application/x-www-form-urlencoded" -H "x-ibm-client-id: ${clientId}" -H 
-  // "x-ibm-client-secret: ${clientSecret}" -X POST -d "
-  // grant_type=authorization_code&client_id=${clientId}&redirect_uri=${redirectUri}&code=${code}"`;
   
   exec(command, (err, stdout) => {
     if (err) {
@@ -70,7 +55,7 @@ router.get('/unionbank/authorize/:code', (req, res) => {
       return;
     }
 
-    console.log(`${stdout}`);
+    // console.log(`${stdout}`);
     res.json(stdout);
   });
 });

@@ -25,6 +25,7 @@ db.on("error", err => {
 });
 
 app
+  .use(express.static(path.join('public')))
   .use(cookieParser("secret"))
   .use(session({ cookie: { maxAge: 60000 } }))
   .use(flash())

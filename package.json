@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -r babel-register index.js"
+    "start": "nodemon -r babel-register index.js",
+    "commit": "git-cz"
   },
   "author": "Four of Chains",
   "license": "ISC",
@@ -18,14 +19,20 @@
     "express-session": "^1.15.6",
     "mongoose": "^5.3.6",
     "pug": "^2.0.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
     "simple-json-store": "0.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-1": "^6.24.1",
     "babel-register": "^6.26.0",
+    "commitizen": "^3.0.4",
     "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "nodemon": "^1.18.4"
   }
 }

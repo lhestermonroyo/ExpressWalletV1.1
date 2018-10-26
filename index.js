@@ -1,7 +1,6 @@
 import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import flash from 'connect-flash';
@@ -9,20 +8,6 @@ import flash from 'connect-flash';
 import allRoutes from './server/routes/';
 const app = express();
 const port = 3000;
-
-mongoose.connect(
-  "mongodb://localhost/expresswallet",
-  { useNewUrlParser: true }
-);
-let db = mongoose.connection;
-
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
-
-db.on("error", err => {
-  console.log(err);
-});
 
 app
   .use(express.static(path.join('public')))

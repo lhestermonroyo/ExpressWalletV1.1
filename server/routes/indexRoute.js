@@ -1,5 +1,4 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import bank from '../ExternalAPI/Unionbank';
 import request from 'request-promise';
 import axios from 'axios';
@@ -12,10 +11,8 @@ router.get("/", (req, res) => {
   res.render("index.pug", { title: "Log In | Express Wallet" });
 });
 
-let Accounts = require("../../models/accounts");
 
 router.post("/login", async (req, res) => {
-  // return await bank.onlineLogin();
   // const scope = 'account_info';
   const scope = 'account_balances';
   const redirect = 'http://localhost:3000/home';
@@ -26,9 +23,7 @@ router.post("/login", async (req, res) => {
   axios.defaults.headers.post['x-ibm-client-secret'] = clientSecret;
   const path = `/convergent/v1/oauth2/authorize?client_id=${clientId}&response_type=code&scope=${scope}&redirect_uri=${redirect}`;
   const response = await axios.get(path);
-  // console.log('response: ', response.data);
   const redirectURI = response.request.res.req.agent.protocol + '//' + response.request.res.connection._host + response.request.path;
-  // res.redirect(redirect);
   res.redirect(redirectURI);
 });
 
@@ -51,12 +46,10 @@ router.get('/unionbank/authorize/:code', (req, res) => {
   
   exec(command, (err, stdout) => {
     if (err) {
-      // console.log(err);
       res.send();
       return;
     }
 
-    // console.log(`${stdout}`);
     res.json(stdout);
   });
 });

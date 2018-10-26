@@ -12,9 +12,17 @@ const recieveAuth = () => {
   console.log('Access token set: ' + accessToken);
 };
 
+const getBalance = () => {
+  const container = document.querySelector('#balanceH5');
+  const auth = window.localStorage.getItem('accessToken');
+  axios.get(`/home/getbalance/${auth}`)
+    .then(value => container.innerHTML = `P${value}`);
+}
+
 
 
 window.onload = () => {
   recieveAuth();
   requestAuthorize();
+  getBalance();
 }

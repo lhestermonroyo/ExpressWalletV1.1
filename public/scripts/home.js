@@ -2,5 +2,4 @@
 
 window.onload = () => {
   console.log('sa sulod sa public hihihi');
-  bank.receiveAuth();
 };

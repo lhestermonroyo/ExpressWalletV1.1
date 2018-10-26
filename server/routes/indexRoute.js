@@ -38,7 +38,7 @@ router.get('/unionbank/authorize/:code', (req, res) => {
    */
   // const code = req.params.code;
   const { code } = req.params;
-  console.log('ang code:', code);
+  // console.log('ang code:', code);
   // const redirectUri = 'http://localhost:3000/home';
   const redirect_uri = 'http%3A%2F%2Flocalhost%3A3030%2Fhome';
 
@@ -48,15 +48,15 @@ router.get('/unionbank/authorize/:code', (req, res) => {
     
   }
 
-  const command = `curl 'https://api-uat.unionbankph.com/partners/sb/convergent/v1/oauth2/token' \
-  -H 'accept: application/json' \
-  -H 'content-type: application/x-www-form-urlencoded' \
-  -H 'x-ibm-client-id: ${clientId}' \
-  -H 'x-ibm-client-secret: ${clientSecret}' \
-  -d 'grant_type=authorization_code&client_id=${clientId}&redirect_uri=${redirect_uri}&code=${code}'
-`;
+//   const command = `curl 'https://api-uat.unionbankph.com/partners/sb/convergent/v1/oauth2/token' \
+//   -H 'accept: application/json' \
+//   -H 'content-type: application/x-www-form-urlencoded' \
+//   -H 'x-ibm-client-id: ${clientId}' \
+//   -H 'x-ibm-client-secret: ${clientSecret}' \
+//   -d 'grant_type=authorization_code&client_id=${clientId}&redirect_uri=${redirect_uri}&code=${code}'
+// `;
 
-  // const command = `curl https://api-uat.unionbankph.com/partners/sb/convergent/v1/oauth2/token -H "accept: application/json" -H "content-type: application/x-www-form-urlencoded" -H "x-ibm-client-id: ${clientId}" -H "x-ibm-client-secret: ${clientSecret}" -X POST -d "grant_type=authorization_code&client_id=${clientId}&redirect_uri=${redirect_uri}&code=${code}"`;
+  const command = `curl https://api-uat.unionbankph.com/partners/sb/convergent/v1/oauth2/token -H "accept: application/json" -H "content-type: application/x-www-form-urlencoded" -H "x-ibm-client-id: ${clientId}" -H "x-ibm-client-secret: ${clientSecret}" -X POST -d "grant_type=authorization_code&client_id=${clientId}&redirect_uri=${redirect_uri}&code=${code}"`;
 
   // const command = `curl https://api-uat.unionbankph.com/partners/sb/convergent/v1/oauth2/token -H 
   // "accept: application/json" -H "content-type: application/x-www-form-urlencoded" -H "x-ibm-client-id: ${clientId}" -H 

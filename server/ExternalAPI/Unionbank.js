@@ -63,19 +63,20 @@ class UnionBank {
     return await request(options);
   }
 
-  async receiveAuth() {
-    const accessToken = window.location.search.split('=')[1];
-    window.localStorage.setItem('accessToken', accessToken);
-    console.log('Access token set: ' + accessToken);
-    await this.requestAuthorize();
-  }
-
-  async requestAuthorize() {
-    console.log('Requesting token...');
-    const response = await axios.get('/unionbank/authorize/' + window.localStorage.getItem('accessToken'));
-    console.log(response.data);
-    window.localStorage.setItem('accessToken', response.data);
-    console.log(JSON.parse(window.localStorage.getItem('accessToken')));
+  async getBalance(auth) {
+    axios.defaults.baseURL = 'https://api-uat.unionbankph.com/partners/sb';
+    axios.defaults.headers.get['content-type'] = 'application/json';
+    axios.defaults.headers.get['accept'] = 'application/json';
+    axios.defaults.headers.get['x-ibm-client-id'] = this.clientId;
+    axios.defaults.headers.get['x-ibm-client-secret'] = this.clientSecret;
+    const path = '/accounts/v1/balances';
+    // const auth = JSON.parse(window.localStorage.getItem('accessToken'));
+    axios.defaults.headers.get['authorization'] = 'Bearer ' + auth.accessToken;
+    // axios.defaults.headers.get['authorization'] = 'Bearer ' + auth.access_token;
+    
+    const response = await axios.get(path);
+    console.log('balance:', response.data[0].amount);
+    return response.data[0].amount;
   }
 
   // async onlineLogin() {

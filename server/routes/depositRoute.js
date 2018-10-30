@@ -22,7 +22,7 @@ router.post("/add/:id", (req, res) => {
           sender: req.params.id,
           recepient: "Express Wallet",
           amount: req.body.amount,
-          wallet_balance: 
+          wallet_balance: 50000
         });
         req.flash(
           "success",
@@ -35,16 +35,6 @@ router.post("/add/:id", (req, res) => {
       }
     });
   });
-
-  // let transactions = new Transactions({
-  //   transaction_type: "Deposit",
-  //   sender: ""
-  // });
-  // req.flash(
-  //   "success",
-  //   `${req.params.id} have deposited P${req.body.amount} in your wallet.`
-  // );
-  // res.redirect("/deposit");
 });
 
 module.exports = router;

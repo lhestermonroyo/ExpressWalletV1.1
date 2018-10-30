@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const crypt = require("bcryptjs");
 const router = express.Router();
 
-let Accounts = require("../../models/accounts");
 router.get("/", (req, res) => {
   Accounts.find({}, (err, accounts) => {
     if (err) {
@@ -17,7 +16,8 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/add", (req, res) => {
+let Accounts = require("../../models/accounts");
+router.post("/signup/add", (req, res) => {
   if (req.body.password === req.body.con_password) {
     Accounts.count({ email: req.body.email }, (err, cnt) => {
       if (err) {

@@ -6,15 +6,10 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const expressValidator = require("express-validator");
-const indexRouter = require("./server/routes/indexRoute");
-const signupRouter = require("./server/routes/signupRoute");
+
+const indexRoute = require("./server/routes/indexRoute");
+const signupRoute = require("./server/routes/signupRoute");
 const homeRoute = require("./server/routes/homeRoute");
-const fundtransferRoute = require("./server/routes/fundtransferRoute");
-const checkbalanceRoute = require("./server/routes/checkbalanceRoute");
-const depositRoute = require("./server/routes/depositRoute");
-const withdrawRoute = require("./server/routes/withdrawRoute");
-const billspaymentRoute = require("./server/routes/billspaymentRoute");
-const transactionhistoryRoute = require("./server/routes/transactionhistoryRoute");
 const config = require("./config/database");
 const app = express();
 const port = 3000;
@@ -78,15 +73,9 @@ app.use(express.static("public"));
 app.set("views", path.join(__dirname, "server/views"));
 app.set("view engine", "pug");
 
-app.use("/", indexRouter);
-app.use("/signup", signupRouter);
+app.use("/", indexRoute);
+app.use("/signup", signupRoute);
 app.use("/home", homeRoute);
-app.use("/fundtransfer", fundtransferRoute);
-app.use("/checkbalance", checkbalanceRoute);
-app.use("/deposit", depositRoute);
-app.use("/withdraw", withdrawRoute);
-app.use("/billspayment", billspaymentRoute);
-app.use("/transactionhistory", transactionhistoryRoute);
 
 app.listen(port, err => {
   if (err) {

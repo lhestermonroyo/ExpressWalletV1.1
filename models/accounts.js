@@ -20,6 +20,14 @@ let accountsSchema = mongoose.Schema({
   timestamp: {
     type: Date,
     default: Date.now
+  },
+  balance: {
+    type: Number,
+    default: 0
+  },
+  transaction: {
+    type: Array,
+    default: []
   }
 });
 

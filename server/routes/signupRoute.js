@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 });
 
 let Accounts = require("../../models/accounts");
-router.post("/signup/add", (req, res) => {
+router.post("/add", (req, res) => {
   if (req.body.password === req.body.con_password) {
     Accounts.count({ email: req.body.email }, (err, cnt) => {
       if (err) {
@@ -28,8 +28,7 @@ router.post("/signup/add", (req, res) => {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
-            password: req.body.password,
-            timestamp: new Date()
+            password: req.body.password
           });
 
           crypt.genSalt(10, (err, salt) => {

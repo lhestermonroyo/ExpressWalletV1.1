@@ -10,6 +10,11 @@ const expressValidator = require("express-validator");
 const indexRoute = require("./server/routes/indexRoute");
 const signupRoute = require("./server/routes/signupRoute");
 const homeRoute = require("./server/routes/homeRoute");
+const fundtransferRoute = require("./server/routes/fundtransferRoute");
+const checkbalanceRoute = require("./server/routes/checkbalanceRoute");
+const depositRoute = require("./server/routes/depositRoute");
+const withdrawRoute = require("./server/routes/withdrawRoute");
+
 const config = require("./config/database");
 const app = express();
 const port = 3000;
@@ -73,9 +78,14 @@ app.use(express.static("public"));
 app.set("views", path.join(__dirname, "server/views"));
 app.set("view engine", "pug");
 
-app.use("/", indexRoute);
-app.use("/signup", signupRoute);
-app.use("/home", homeRoute);
+app
+  .use("/", indexRoute)
+  .use("/signup", signupRoute)
+  .use("/home", homeRoute)
+  .use("/fundtransfer", fundtransferRoute)
+  .use("/checkbalance", checkbalanceRoute)
+  .use("/deposit", depositRoute)
+  .use("/withdraw", withdrawRoute);
 
 app.listen(port, err => {
   if (err) {

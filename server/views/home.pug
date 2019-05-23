@@ -13,7 +13,7 @@ html(lang="en")
       .container
         a.navbar-brand(href='#')
           i.fas.fa-wallet.fa-fw
-          |     Express Wallet
+          |     Stablecoin Wallet
         button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarColor01' aria-controls='navbarColor01' aria-expanded='false' aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarColor01.collapse.navbar-collapse
@@ -25,50 +25,52 @@ html(lang="en")
             li.nav-item
               a.nav-link(href='/') Log Out
     .container
+      hr
       //- h2.mt-3.mb-3 #{foo}
       h5.text-left Access Token: 
         //- strong#balanceH5 PHP 0.00
-        strong #{accessToken}
+        strong#tokenText
+        //- strong #{accessToken}
       hr
-      .row.mt-3
-        .col-lg-4
-          .card.text-white.bg-primary.mb-3(style='max-width: 20rem;')
-            .card-body
-              h4.card-title Fund Transfer
-              p.card-text Coming Soon. 
-              a.btn.btn-primary.btn-block.border-light(href="/fundtransfer") Go to Fund Transfer
-        .col-lg-4
-          .card.text-white.bg-success.mb-3(style='max-width: 20rem;')
-            .card-body
-              h4.card-title Check Balance
-              p.card-text Coming Soon. 
-              a.btn.btn-success.btn-block.border-light(href="/checkbalance") Go to Check Balance
-        .col-lg-4
-          .card.text-white.bg-warning.mb-3(style='max-width: 20rem;')
-            .card-body
-              h4.card-title Deposit
-              p.card-text Stimulate Deposit Money Online. 
-              a.btn.btn-warning.btn-block.border-light(href="/deposit") Go to Deposit
-        .col-lg-4
-          .card.text-white.bg-info.mb-3(style='max-width: 20rem;')
-            .card-body
-              h4.card-title Withdraw
-              p.card-text Stimulate Withdraw Money Online. 
-              a.btn.btn-info.btn-block.border-light(href="/withdraw") Go to Withdraw
-        .col-lg-4
-          .card.text-white.bg-danger.mb-3(style='max-width: 20rem;')
-            .card-body
-              h4.card-title Bills Payment
-              p.card-text Coming soon. 
-              a.btn.btn-danger.btn-block.border-light(href="/billspayment") Go to Bills Payment
-        .col-lg-4
-          .card.text-white.bg-dark.mb-3(style='max-width: 20rem;')
-            .card-body
-              h4.card-title Transaction History
-              p.card-text Coming Soon. 
-              a.btn.btn-dark.btn-block.border-light(href="/transactionhistory") Go to Transaction History
+      //- .row.mt-3
+      //-   .col-lg-4
+      //-     .card.text-white.bg-primary.mb-3(style='max-width: 20rem;')
+      //-       .card-body
+      //-         h4.card-title Fund Transfer
+      //-         p.card-text Coming Soon. 
+      //-         a.btn.btn-primary.btn-block.border-light(href="/fundtransfer") Go to Fund Transfer
+      //-   .col-lg-4
+      //-     .card.text-white.bg-success.mb-3(style='max-width: 20rem;')
+      //-       .card-body
+      //-         h4.card-title Check Balance
+      //-         p.card-text Coming Soon. 
+      //-         a.btn.btn-success.btn-block.border-light(href="/checkbalance") Go to Check Balance
+      //-   .col-lg-4
+      //-     .card.text-white.bg-warning.mb-3(style='max-width: 20rem;')
+      //-       .card-body
+      //-         h4.card-title Deposit
+      //-         p.card-text Stimulate Deposit Money Online. 
+      //-         a.btn.btn-warning.btn-block.border-light(href="/deposit") Go to Deposit
+      //-   .col-lg-4
+      //-     .card.text-white.bg-info.mb-3(style='max-width: 20rem;')
+      //-       .card-body
+      //-         h4.card-title Withdraw
+      //-         p.card-text Stimulate Withdraw Money Online. 
+      //-         a.btn.btn-info.btn-block.border-light(href="/withdraw") Go to Withdraw
+      //-   .col-lg-4
+      //-     .card.text-white.bg-danger.mb-3(style='max-width: 20rem;')
+      //-       .card-body
+      //-         h4.card-title Bills Payment
+      //-         p.card-text Coming soon. 
+      //-         a.btn.btn-danger.btn-block.border-light(href="/billspayment") Go to Bills Payment
+      //-   .col-lg-4
+      //-     .card.text-white.bg-dark.mb-3(style='max-width: 20rem;')
+      //-       .card-body
+      //-         h4.card-title Transaction History
+      //-         p.card-text Coming Soon. 
+      //-         a.btn.btn-dark.btn-block.border-light(href="/transactionhistory") Go to Transaction History
     .footer.mt-5.mb-5
-      .p.text-center &copy; Express Wallet 2018. All Rights Reserved.
+      .p.text-center &copy; Stablecoin Wallet 2019. All Rights Reserved.
   script(src='https://unpkg.com/axios/dist/axios.min.js')  
   script(src='./scripts/Unionbank.js')
         

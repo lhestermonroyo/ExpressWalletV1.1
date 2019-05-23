@@ -2,10 +2,11 @@ const requestAuthorize = async () => {
   const token = window.localStorage.getItem('accessToken');
   await axios.get(`/unionbank/authorize/${token}`)
     .then(res => {
-      console.log('RESULT:', res);
-      return res;
+      console.log('TOKEN:', res.data);
+      document.querySelector('#tokenText').innerHTML = res.data;
+      // return res;
     })
-    .then(res => JSON.stringify(window.localStorage.setItem('accessToken', res.data)));
+    // .then(res => JSON.stringify(window.localStorage.setItem('accessToken', res.data)));
 }
 
 const recieveAuth = () => {
@@ -23,6 +24,7 @@ const getBalance = async () => {
     })
     .then(data => container.innerHTML = `${data.currency} ${data.amount.toFixed(2)}`);
 }
+
 
 
 window.onload = async () => {

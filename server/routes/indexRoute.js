@@ -56,7 +56,8 @@ router.get('/unionbank/authorize/:code', (req, res) => {
     console.log('access token:', JSON.parse(stdout).access_token);
     const accessToken = JSON.parse(stdout).access_token;
     // res.json(stdout);
-    res.render("home.pug", { accessToken });
+    // res.render("home.pug", { accessToken });
+    res.json(accessToken);
   });
 });
 

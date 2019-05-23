@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
   // res.render("home.pug", { title: "Dashboard | Express Wallet" });
   // console.log('REQUEST:', req);
   res.render("home.pug", { accessToken: "bar" });
+  // res.redirect('/')
 });
 
 router.get('/getbalance/:auth', async (req, res) => {

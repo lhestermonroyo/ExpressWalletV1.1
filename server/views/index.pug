@@ -11,11 +11,11 @@ html(lang="en")
     .container
       p.lead.text-center.mt-3 
         i.fas.fa-wallet.fa-fw
-        |     Express Wallet
+        |     Stablecoin Wallet
       .row
         .col-lg-4
         .col-lg-4
-          h2.text-center.mt-3 Log In
+          h2.text-center.mt-3 Select Transaction Type
           form(action="/login", method="post")
             //- .form-group
             //-   label(for="") E-mail:
@@ -23,10 +23,14 @@ html(lang="en")
             //- .form-group
             //-   label(for="") Password:
             //-   input.form-control(type="password", name="password" required)
+            select.form-control(name="transaction_type")
+              option(value="transfers") transfers
+              option(value="account_info") account_info
+            <br />
             .form-group
               button.btn.btn-block.btn-success(type="submit") Log In
           a.btn.btn-block.btn-primary(href="/signup") Sign Up
         .col-lg-4
     .footer.mt-5.mb-5
-      .p.text-center &copy; Express Wallet 2018. All Rights Reserved.    
+      .p.text-center &copy; Stablecoin Wallet 2019. All Rights Reserved.    
         

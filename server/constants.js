@@ -1,2 +1,2 @@
-export const clientId = '6770ff0a-ea5e-445e-93ee-1f2665cac0ef';
-export const clientSecret = 'V5bM4hW3eH4mN0nT4bI7jR2pW1lN1pQ3oO2dE2gD1bW1xB5gA6';
+export const clientId = '385444c4-d6f3-4ba2-b94f-ed6a2f564361';
+export const clientSecret = 'T8eM6sP7oT2oJ0oO6iY7aE6qG6oD3mQ5tD1sR0mP1uT8lG2kP6';

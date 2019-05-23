@@ -11,21 +11,21 @@ router.get("/", (req, res) => {
   res.render("index.pug", { title: "Log In | Express Wallet" });
 });
 
-
 router.post("/login", async (req, res) => {
   // const scope = 'account_info';
-  const scope = 'account_balances';
-  const redirect = 'http://localhost:3000/home';
+  console.log('TRANSACTION TYPE:', req.body.transaction_type);
+  const scope = req.body.transaction_type;
+  const redirect = 'http://google.com';
   axios.defaults.baseURL = 'https://api-uat.unionbankph.com/partners/sb';
   axios.defaults.headers.post['content-type'] = 'text/html';
   axios.defaults.headers.post['accept'] = 'application/x-www-form-urlencoded';
-  axios.defaults.headers.post['x-ibm-client-id'] = clientId;
-  axios.defaults.headers.post['x-ibm-client-secret'] = clientSecret;
-  const path = `/convergent/v1/oauth2/authorize?client_id=${clientId}&response_type=code&scope=${scope}&redirect_uri=${redirect}`;
+  const path = `https://api-uat.unionbankph.com/partners/sb//convergent/v1/oauth2/authorize?response_type=code&client_id=385444c4-d6f3-4ba2-b94f-ed6a2f564361&redirect_uri=http://localhost:3000/home&scope=${scope}`;
+  // const path = 'https://api-uat.unionbankph.com/partners/sb//convergent/v1/oauth2/authorize?response_type=code&client_id=385444c4-d6f3-4ba2-b94f-ed6a2f564361&redirect_uri=http:google.com&scope=payments';
   const response = await axios.get(path);
   const redirectURI = response.request.res.req.agent.protocol + '//' + response.request.res.connection._host + response.request.path;
   res.redirect(redirectURI);
 });
+
 
 router.get('/unionbank/authorize/:code', (req, res) => {
   /**
@@ -33,6 +33,7 @@ router.get('/unionbank/authorize/:code', (req, res) => {
     * Getting { "error":"invalid_grant" } consistently. #hack
    */
   const { code } = req.params;
+  console.log('CODE:', code);
   const redirect_uri = 'http://localhost:3000/home';
   // const redirect_uri = 'http%3A%2F%2Flocalhost%3A3030%2Fhome';
 
@@ -49,8 +50,13 @@ router.get('/unionbank/authorize/:code', (req, res) => {
       res.send();
       return;
     }
-
-    res.json(stdout);
+    console.log('ERROR:', err);
+    console.log('-------------------------------------------------------');
+    // console.log('STDOUT:', stdout);
+    console.log('access token:', JSON.parse(stdout).access_token);
+    const accessToken = JSON.parse(stdout).access_token;
+    // res.json(stdout);
+    res.render("home.pug", { accessToken });
   });
 });
 

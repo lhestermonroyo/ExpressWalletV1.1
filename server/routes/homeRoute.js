@@ -6,7 +6,9 @@ import { clientId, clientSecret } from '../constants';
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("home.pug", { title: "Dashboard | Express Wallet" });
+  // res.render("home.pug", { title: "Dashboard | Express Wallet" });
+  // console.log('REQUEST:', req);
+  res.render("home.pug", { accessToken: "bar" });
 });
 
 router.get('/getbalance/:auth', async (req, res) => {

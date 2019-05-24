@@ -5,6 +5,7 @@ import axios from 'axios';
 import util from 'util';
 import { exec } from 'child_process';
 import { clientId, clientSecret } from '../constants';
+require('dotenv').config();
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -19,7 +20,10 @@ router.post("/login", async (req, res) => {
   axios.defaults.baseURL = 'https://api-uat.unionbankph.com/partners/sb';
   axios.defaults.headers.post['content-type'] = 'text/html';
   axios.defaults.headers.post['accept'] = 'application/x-www-form-urlencoded';
-  const path = `https://api-uat.unionbankph.com/partners/sb//convergent/v1/oauth2/authorize?response_type=code&client_id=385444c4-d6f3-4ba2-b94f-ed6a2f564361&redirect_uri=http://localhost:3000/home&scope=${scope}`;
+  const redirect_uri = process.env.REDIRECT_URI;
+  const clientId = process.env.CLIENT_ID;
+  const clientSecret = process.env.CLIENT_SECRET;
+  const path = `https://api-uat.unionbankph.com/partners/sb//convergent/v1/oauth2/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirect_uri}&scope=${scope}`;
   // const path = 'https://api-uat.unionbankph.com/partners/sb//convergent/v1/oauth2/authorize?response_type=code&client_id=385444c4-d6f3-4ba2-b94f-ed6a2f564361&redirect_uri=http:google.com&scope=payments';
   const response = await axios.get(path);
   const redirectURI = response.request.res.req.agent.protocol + '//' + response.request.res.connection._host + response.request.path;
@@ -33,8 +37,11 @@ router.get('/unionbank/authorize/:code', (req, res) => {
     * Getting { "error":"invalid_grant" } consistently. #hack
    */
   const { code } = req.params;
-  console.log('CODE:', code);
-  const redirect_uri = 'http://localhost:3000/home';
+  // console.log('CODE:', code);
+  // const redirect_uri = 'http://localhost:3000/home';
+  const redirect_uri = process.env.REDIRECT_URI;
+  const clientId = process.env.CLIENT_ID;
+  const clientSecret = process.env.CLIENT_SECRET;
   // const redirect_uri = 'http%3A%2F%2Flocalhost%3A3030%2Fhome';
 
   const options = {

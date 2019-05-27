@@ -19,9 +19,7 @@
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "simple-json-store": "0.0.1"
-  },
-  "devDependencies": {
+    "simple-json-store": "0.0.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",

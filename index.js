@@ -1,11 +1,11 @@
-import path from 'path';
-import express from 'express';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
-import session from 'express-session';
-import flash from 'connect-flash';
+const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
 
-import allRoutes from './server/routes/';
+const allRoutes = require('./server/routes/index');
 const app = express();
 const port = 3000;
 

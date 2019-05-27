@@ -1,6 +1,6 @@
-import 'regenerator-runtime/runtime';
-import request from 'request-promise';
-import axios from 'axios';
+require('regenerator-runtime/runtime');
+const request = require( 'request-promise');
+const axios = require( 'axios');
 
 class UnionBank {
   constructor() {
@@ -67,4 +67,4 @@ class UnionBank {
 }
 
 const bankInstance = new UnionBank();
-export default bankInstance;
+module.exports = bankInstance;

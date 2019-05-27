@@ -1,10 +1,6 @@
-import express from 'express';
-import bank from '../ExternalAPI/Unionbank';
-import request from 'request-promise';
-import axios from 'axios';
-import util from 'util';
-import { exec } from 'child_process';
-import { clientId, clientSecret } from '../constants';
+const express = require('express');
+const axios = require('axios');
+const { exec } = require('child_process');
 require('dotenv').config();
 const router = express.Router();
 
@@ -68,4 +64,4 @@ router.get('/unionbank/authorize/:code', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;

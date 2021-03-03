@@ -16,7 +16,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "mongoose": "^5.5.10",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "simple-json-store": "0.0.1",
